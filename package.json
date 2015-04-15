@@ -12,8 +12,8 @@
   },
   "keywords": [
     "gulp",
-    "node-module",
-    "external"
+    "exports",
+    "browserify"
   ],
   "author": "zoubin",
   "license": "MIT",
