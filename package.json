@@ -1,0 +1,32 @@
+{
+  "name": "gulp-exports",
+  "version": "0.0.1",
+  "description": "Make a nodish module usable in browser, no dependencies handled",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zoubin/gulp-exports.git"
+  },
+  "keywords": [
+    "gulp",
+    "node-module",
+    "external"
+  ],
+  "author": "zoubin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoubin/gulp-exports/issues"
+  },
+  "homepage": "https://github.com/zoubin/gulp-exports",
+  "dependencies": {
+    "through2": "^0.6.5"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "gulp": "^3.8.11",
+    "mocha": "^2.2.4"
+  }
+}
