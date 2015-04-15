@@ -28,15 +28,15 @@ gulp.src('number.js')
 ```javascript
 (function (module, exports) {
    var _exports = module.exports;
-   module.exports = module["exports"] || {};
-   exports = module["exports"] = module.exports;
+   module.exports = module["One"] || {};
+   exports = module["One"] = module.exports;
    /****** code begin *********/
 module.exports = 1;
 
    /****** code end *********/
    if (typeof _exports === "undefined") {
        delete module.exports;
-   } else if ("exports" !== "exports") {
+   } else if ("One" !== "exports") {
        module.exports = _exports;
    }
 }).call(window, window, window["One"]);
