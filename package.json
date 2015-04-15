@@ -1,6 +1,6 @@
 {
   "name": "gulp-exports",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Make a nodish module usable in browser, no dependencies handled",
   "main": "index.js",
   "scripts": {
