@@ -1,6 +1,6 @@
 {
   "name": "gulp-expose",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Expose a node module in browser, no dependencies handled",
   "main": "index.js",
   "scripts": {
