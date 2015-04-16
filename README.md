@@ -16,7 +16,7 @@ module.exports = 1;
 ```javascript
 var expose = require('gulp-expose');
 gulp.src('number.js')
-    .pipe(expose('window', 'One'))
+    .pipe(expose(function (file) { return { host: 'window', expose: 'One' } }))
     .pipe(gulp.dest('dist'));
 // window.MyFavNumber.One == 1
 ```
@@ -26,7 +26,7 @@ OR
 ```javascript
 var expose = require('gulp-expose');
 gulp.src('number.js')
-    .pipe(expose('window.MyFavNumber', 'One'))
+    .pipe(expose(function (file) { return { host: 'window.MyFavNumber', expose: 'One' } }))
     .pipe(gulp.dest('dist'));
 
 // window.MyFavNumber.One == 1
@@ -49,7 +49,7 @@ var expose = require('gulp-expose');
 var gulp = require('gulp-rename');
 
 gulp.src('test/src/config.json')
-    .pipe(expose('window', 'PKG'))
+    .pipe(expose(function (file) { return { host: 'window', expose: 'PKG' } }))
     .pipe(rename('config.js'))
     .pipe(gulp.dest('test/dist'))
 
@@ -57,10 +57,12 @@ gulp.src('test/src/config.json')
 
 ```
 
-### expose(host, key)
+### expose(getExposeInfo)
+
+`getexposeinfo` receives a [vinyl](https://github.com/wearefractal/vinyl) `file` object, and should return the expose info object:
 
 * host. String. The object that will have the exposed api. It can be any valid expression that can be evaluated as an object.
-* key. [String|Function]. The property name that will be added to `host`, with the exposed api. If it is a function, it receives the file object passed in, and should return a string as the key. If falsy value returned, nothing will be done.
+* expose. String. The property name that will be added to `host`, with the exposed api.
 
 ## example
 
@@ -70,7 +72,7 @@ gulp.src('test/src/config.json')
 var gulp = require('gulp');
 var expose = require('gulp-expose');
 gulp.src('number.js')
-    .pipe(expose('window', 'One'))
+    .pipe(expose(function (file) { return { host: 'window', expose: 'One' } }))
     .pipe(gulp.dest('dist'));
 ```
 

@@ -1,36 +1,25 @@
 var through = require('through2');
+var path = require('path');
 
-module.exports = gulpExports;
+module.exports = gulpExpose;
 
-function gulpExports(host, exports) {
-    var expose = exports;
-    if (!expose) {
-        expose = host;
-        host = 'this';
-    }
-    if (typeof expose === 'string') {
-        exports = expose;
-        expose = function () {
-            return exports;
+function gulpExpose(getExposeInfo) {
+    if (typeof getExposeInfo !== 'function') {
+        getExposeInfo =  function (file) {
+            return null;
         };
-    }
-    if (typeof expose !== 'function') {
-        expose = false;
     }
 
     return through.obj(function (file, enc, next) {
-        if (!file.isBuffer()) {
-            return next(null, file);
-        }
-        var exposeKey = expose && expose(file);
-        if (!exposeKey) {
+        var info = getExposeInfo(file);
+        if (!file.isBuffer() || !info) {
             return next(null, file);
         }
         var contents = file.contents.toString(enc);
         if (/\.json$/.test(file.path)) {
             contents = 'module.exports=' + contents;
         }
-        contents = wrap(contents, host, exposeKey);
+        contents = wrap(contents, info.host, info.expose);
         file.contents = new Buffer(contents, enc);
         next(null, file);
     });
