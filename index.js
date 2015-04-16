@@ -3,16 +3,22 @@ var path = require('path');
 
 module.exports = gulpExpose;
 
-function gulpExpose(getExposeInfo) {
-    if (typeof getExposeInfo !== 'function') {
-        getExposeInfo =  function (file) {
-            return null;
+function gulpExpose(host, expose) {
+    var getExposeInfo;
+    if (typeof host === 'function') {
+        getExposeInfo = host;
+    } else {
+        getExposeInfo = function (file) {
+            return {
+                host: host,
+                expose: expose
+            };
         };
     }
 
     return through.obj(function (file, enc, next) {
         var info = getExposeInfo(file);
-        if (!file.isBuffer() || !info) {
+        if (!file.isBuffer() || !info.expose) {
             return next(null, file);
         }
         var contents = file.contents.toString(enc);

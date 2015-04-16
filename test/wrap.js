@@ -6,7 +6,7 @@ var rename = require('gulp-rename');
 describe('export node modules', function () {
     it('number', function (cb) {
         gulp.src('test/src/number.js')
-            .pipe(expose(exposeConf))
+            .pipe(expose('module', 'exports'))
             .pipe(gulp.dest('test/dist'))
             .on('finish', function () {
                 assert.equal(require('./dist/number.js'), 1, 'should be exported');
