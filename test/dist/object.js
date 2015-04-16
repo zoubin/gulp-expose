@@ -1,16 +1,24 @@
-(function (module, exports) {
-   var _exports = module.exports;
-   module.exports = module["exports"] || {};
-   exports = module["exports"] = module.exports;
+(function (host, expose) {
+   var module = { exports: {} };
+   var exports = module.exports;
    /****** code begin *********/
 module.exports = {
     fn: function () {}
 };
 
    /****** code end *********/
-   if (typeof _exports === "undefined") {
-       delete module.exports;
-   } else if ("exports" !== "exports") {
-       module.exports = _exports;
-   }
-}).call(module, module, module["exports"]);
+   ;(
+function copy(src, target, obj) {
+    obj[target] = obj[target] || {};
+    if (src && typeof src === 'object') {
+        for (var k in src) {
+            if (src.hasOwnProperty(k)) {
+                obj[target][k] = src[k];
+            }
+        }
+    } else {
+        obj[target] = src;
+    }
+}
+   ).call(null, module.exports, expose, host);
+}).call(module, module, "exports");

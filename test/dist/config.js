@@ -2,7 +2,9 @@
    var module = { exports: {} };
    var exports = module.exports;
    /****** code begin *********/
-module.exports = 1;
+module.exports={
+    "name": "gulp-expose"
+}
 
    /****** code end *********/
    ;(

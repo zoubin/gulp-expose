@@ -1,32 +1,33 @@
 {
-  "name": "gulp-exports",
-  "version": "0.0.3",
-  "description": "Make a nodish module usable in browser, no dependencies handled",
+  "name": "gulp-expose",
+  "version": "0.0.4",
+  "description": "Expose a node module in browser, no dependencies handled",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha test/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoubin/gulp-exports.git"
+    "url": "https://github.com/zoubin/gulp-expose.git"
   },
   "keywords": [
     "gulp",
-    "exports",
+    "expose",
     "browserify"
   ],
   "author": "zoubin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zoubin/gulp-exports/issues"
+    "url": "https://github.com/zoubin/gulp-expose/issues"
   },
-  "homepage": "https://github.com/zoubin/gulp-exports",
+  "homepage": "https://github.com/zoubin/gulp-expose",
   "dependencies": {
     "through2": "^0.6.5"
   },
   "devDependencies": {
     "chai": "^2.2.0",
     "gulp": "^3.8.11",
+    "gulp-rename": "^1.2.2",
     "mocha": "^2.2.4"
   }
 }
