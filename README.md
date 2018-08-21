@@ -18,7 +18,7 @@ var expose = require('gulp-expose');
 gulp.src('number.js')
     .pipe(expose('window', 'One'))
     .pipe(gulp.dest('dist'));
-// window.MyFavNumber.One == 1
+// window.One == 1
 ```
 
 OR
@@ -37,14 +37,13 @@ And json can be exposed, too:
 
 config.json:
 
-```
+```js
 {
     "name": "gulp-expose"
 }
-
 ```
 
-```
+```js
 var expose = require('gulp-expose');
 var gulp = require('gulp-rename');
 
@@ -54,7 +53,6 @@ gulp.src('test/src/config.json')
     .pipe(gulp.dest('test/dist'))
 
 // window.PKG = { name: 'gulp-expose' }
-
 ```
 
 ### expose(host, expose)
@@ -101,7 +99,6 @@ function copy(src, target, obj) {
 }
    ).call(null, module.exports, expose, host);
 }).call(window, window, "One");
-
 ```
 
 Now in browser:
